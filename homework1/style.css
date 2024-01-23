@@ -1,0 +1,105 @@
+body {
+    font-family: 'glacial indifference', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    /* Draw a double border make it rust*/
+    border-style: double;
+    border-width: 10px;
+    border-color: #d25736;
+    /* Add space between the border and its inside elements. */
+    padding: 10px;
+    /* Color the background tan. */
+    background: #fee2ca;
+    width: 90%;
+    margin: auto;
+}
+
+div.align {
+    text-align: center;
+}
+
+.secondary-container {
+    margin: auto;
+    width: 70%;
+    padding: 50px;
+    border-bottom: 4px #d25736 solid;
+    border-spacing: inherit;
+}
+
+#mainheader {
+    font-family: 'cubano', 'Arial', sans-serif;
+    position: center;
+    text-align: center;
+    color: #d25736;
+    opacity: 1;
+    font-size: 60px;
+}
+
+/* Experience Section */
+.main-theme {
+    font-family: 'cubano', 'Arial', sans-serif;
+    padding: 35px;
+    background-color: #f7c5a0;
+    color: #d25736; 
+}
+
+/* About Me Section */
+.about-me {
+    font-family: 'cubano', 'Arial', sans-serif;
+    padding: 35px;
+    color: #d25736; 
+}
+
+/* Additional Section */
+.additional-section {
+    font-family: 'cubano', 'Arial', sans-serif;
+    padding: 35px;
+    background-color: #f7c5a0;
+    color: #d25736; 
+}
+
+/* Secondary Container */
+.secondary-container {
+    font-family: 'cubano', 'Arial', sans-serif;
+    margin: auto;
+    width: 70%;
+    padding: 50px;
+    border-bottom: 4px #d25736 solid;
+    border-spacing: inherit;
+    color: #d25736; 
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* Hero Image Section */
+.hero-image {
+    background-image: url('images/collage.JPG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax scrolling */
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d25736;
+    text-align: center;
+    font-family: 'cubano', 'Arial', sans-serif;
+
+}
+
+/* Background Text */
+.background-box {
+    background-color: #f7c5a0; /* Set the background color */
+    padding: 15px; 
+    color: #d25736; /* Set the text color */
+    display: inline-block; 
+}
