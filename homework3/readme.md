@@ -1,0 +1,1 @@
+I have become much more comfortable with CSS stylesheets and I'm excited to continue learning. I had a lot of of issues with my story function. I was missing a couple curly brackets and it made my buttons and results stop working. I also tried to change the style of the buttons but ran into many problems, and decided to keep the original style.

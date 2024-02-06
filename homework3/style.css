@@ -1,0 +1,19 @@
+body {
+    font-family: glacial indifference;
+    background-color: white;
+    align-content: center;
+    color: white;
+}
+.main-container {
+    /* Draw a double border make it aqua*/
+    border-style: double;
+    border-width: 10px;
+    border-color: aqua;
+    /* Add space between the border and its inside elements. */
+    padding: 40px;
+    /* Color the background teal. */
+    background: rgb(1, 153, 150);
+    width: 90%;
+    margin: auto;
+}
+
