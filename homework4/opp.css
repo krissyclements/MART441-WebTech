@@ -1,0 +1,18 @@
+body {
+    font-family: helvetica;
+    background-color: white;
+    align-content: center;
+    color: white;
+}
+.main-container {
+    /* Draw a double border make it rust*/
+    border-style: double;
+    border-width: 10px;
+    border-color: #b7410e;
+    /* Add space between the border and its inside elements. */
+    padding: 40px;
+    /* Color the background maroon. */
+    background: #800000;
+    width: 90%;
+    margin: auto;
+}
