@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Day!!</title>
+    <link rel="stylesheet" href="barbie.css" id="stylesheet">
+    <style>
+        body {
+            font-family: cubano;
+            background-color: white;
+            align-content: center;
+            color: white;
+    
+
+    </style>
+    <script>
+        function changeStylesheet() {
+            var selectBox = document.getElementById("choice");
+            var selectedOption = selectBox.options[selectBox.selectedIndex].text;  
+            var stylesheet = selectedOption.toLowerCase() + ".css"; 
+            document.getElementById("stylesheet").setAttribute("href", stylesheet);
+        }
+
+        function getChoice1() {
+            var myChoice = document.getElementById("choice").value;
+            var myQuestion = document.getElementById("question");
+            if (myChoice === "Barbie") {
+                document.getElementById("mainImage").src = "images/barbie.png";
+                document.getElementById("choice").style.display = "none";
+                document.getElementById("btnSubmit").style.display = "none";
+
+                document.getElementById("choice2").style.display = "block";
+                document.getElementById("btnSubmit2").style.display = "block";
+
+                myQuestion.innerHTML = "Would you like popcorn and candy while you watch?";
+            } else if (myChoice === "Oppenheimer") {
+                document.getElementById("mainImage").src = "images/oppen.png";
+                document.getElementById("choice").style.display = "none";
+                document.getElementById("btnSubmit").style.display = "none";
+
+                document.getElementById("choice3").style.display = "block";
+                document.getElementById("btnSubmit3").style.display = "block";
+                myQuestion.innerHTML = "Would you like popcorn and candy while you watch?";
+            } else {
+                myQuestion.innerHTML = "Invalid answer";
+            }
+        }
+
+        function getChoice2() {
+            var answer = document.getElementById("choice2").value;
+            var myQuestion = document.getElementById("question");
+            if (answer === "yes") {
+                document.getElementById("mainImage").src = "images/snacks.webp";
+                myQuestion.innerHTML = "Enjoy your snacks with your movie!";
+            } else if (answer === "no") {
+                myQuestion.innerHTML = "No worries, enjoy your movie!";
+            }
+        }
+
+        function getChoice3() {
+            var answer = document.getElementById("choice3").value;
+            var myQuestion = document.getElementById("question");
+            if (answer === "yes") {
+                document.getElementById("mainImage").src = "images/snacks.webp";
+                myQuestion.innerHTML = "Enjoy your snacks with your movie!";
+            } else if (answer === "no") {
+                myQuestion.innerHTML = "No worries, enjoy your movie!";
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="main-container">
+    <h1>Movie Day!!</h1>
+    <br>
+    <img src="images/cb.png" height="200" width="300" id="mainImage">
+    <div id="question">
+        <br>
+        The weather is horrible outside, let's stay inside and watch a movie! Do you want to watch Barbie or Oppenheimer?
+
+    </div>
+
+    <br>
+    <select id="choice" onchange="changeStylesheet()">
+        <option value="Barbie">Barbie</option>
+        <option value="Oppenheimer">Oppenheimer</option>
+    </select>
+    <button id="btnSubmit" onclick="getChoice1();">Choose!</button>
+
+    <select id="choice2" style="display:none">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+    <button id="btnSubmit2" onclick="getChoice2();" style="display:none">Choose!</button>
+
+    <select id="choice3" style="display:none">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+    <button id="btnSubmit3" onclick="getChoice3();" style="display:none">Choose!</button>
+</div>
+</body>
+</html>
