@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TS Memory Game</title>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .image {
+        width: 150px;
+        height: 150px;
+        margin: 5px;
+        background-color: #ddd;
+        border: 3px solid #bae7fa;
+        cursor: pointer;
+        background-size: cover;
+    }
+    body {
+    font-family: cubano;
+    background-color: #bae7fa;
+    align-content: center;
+    color: white;
+}
+.main-container {
+    /* Draw a double border make it hot pink*/
+    border-style: double;
+    border-width: 10px;
+    border-color: #f3aecb;
+    /* Add space between the border and its inside elements. */
+    padding: 40px;
+    /* Color the background barbie pink. */
+    background: #353954;
+    width: 90%;
+    margin: auto;
+   
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+    <h1>Taylor Swift Album Memory Match</h1>
+    <h4>turn over eras posters to find matching albums</h4>
+    <div class="container" id="imageContainer"></div>
+
+
+<script>
+    // shuffle the array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // array of blank images (eras tour poster)
+    const blankImages = Array(22).fill('images/eras.jpeg');
+
+    // array of actual images (album covers)
+    const actualImages = [
+        'images/ts1.png', 'images/ts1.png',
+        'images/ts2.png', 'images/ts2.png',
+        'images/ts3.png', 'images/ts3.png',
+        'images/ts4.png', 'images/ts4.png',
+        'images/ts5.jpeg', 'images/ts5.jpeg',
+        'images/ts6.jpeg', 'images/ts6.jpeg',
+        'images/ts7.jpeg', 'images/ts7.jpeg',
+        'images/ts8.jpeg', 'images/ts8.jpeg',
+        'images/ts9.png', 'images/ts9.png',
+        'images/ts10.png', 'images/ts10.png',
+        'images/ts11.webp', 'images/ts11.webp'
+    ];
+
+    // shuffle the actual images array (album covers)
+    shuffleArray(actualImages);
+
+    // show images
+    function displayImages() {
+        const container = document.getElementById('imageContainer');
+        container.innerHTML = ''; // Clear previous content
+
+        // show blank images (eras poster)
+        for (let i = 0; i < blankImages.length; i++) {
+            const imageDiv = document.createElement('div');
+            imageDiv.classList.add('image');
+            imageDiv.style.backgroundImage = `url(${blankImages[i]})`;
+            imageDiv.addEventListener('click', () => {
+                if (imageDiv.style.backgroundImage.includes('eras.jpeg')) {
+                    imageDiv.style.backgroundImage = `url(${actualImages[i]})`;
+                } else {
+                    imageDiv.style.backgroundImage = `url(${blankImages[i]})`;
+                }
+            });
+            imageDiv.addEventListener('dblclick', () => {
+                imageDiv.style.backgroundImage = `url(${blankImages[i]})`;
+            });
+            container.appendChild(imageDiv);
+        }
+    }
+
+    // call the function to display images
+    displayImages();
+</script>
+
+</body>
+</html>
