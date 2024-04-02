@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    border: 5px dotted #333;
+    margin: 0 auto;
+}
+
+#resetButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: rgb(173, 210, 194);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(32, 163, 158);
+    font-family: cubano;
+  }
