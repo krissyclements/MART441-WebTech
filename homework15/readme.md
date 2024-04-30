@@ -1,0 +1,1 @@
+I am having a lot of issues with my second page, and I asked chat gpt. Chat gpt could not help me or figure out the issue, and said my code looked correct. 

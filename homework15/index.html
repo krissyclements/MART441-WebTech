@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babylon Homework Clements</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <style>
+        canvas {
+            touch-action: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1">
+        <canvas id="renderCanvas1"></canvas>
+        <button onclick="switchToPage('page2')">Go to Page 2</button>
+    </div>
+    <div id="page2" style="display:none">
+        <canvas id="renderCanvas2"></canvas>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var page1 = document.getElementById("page1");
+            var page2 = document.getElementById("page2");
+
+            var canvas1 = document.getElementById("renderCanvas1");
+            var canvas2 = document.getElementById("renderCanvas2");
+
+            var engine1 = new BABYLON.Engine(canvas1, true);
+            var engine2 = new BABYLON.Engine(canvas2, true);
+
+            var createScene1 = function() {
+                var scene = new BABYLON.Scene(engine1);
+                var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), scene);
+                camera.attachControl(canvas1, true);
+
+                var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+                // Create shapes
+                var box = BABYLON.MeshBuilder.CreateBox("box", { size: 0.5 }, scene);
+                var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 0.5 }, scene);
+                var cylinder = BABYLON.MeshBuilder.CreateCylinder("cylinder", { diameterTop: 0.5, diameterBottom: 0.5, height: 0.5 }, scene);
+                var torus = BABYLON.MeshBuilder.CreateTorus("torus", { diameter: 0.5, thickness: 0.2 }, scene);
+                var cone = BABYLON.MeshBuilder.CreateCylinder("cone", { diameterTop: 0, diameterBottom: 0.5, height: 0.5 }, scene);
+
+                // Set colors for each shape
+                box.material = new BABYLON.StandardMaterial("boxMaterial", scene);
+                box.material.diffuseColor = new BABYLON.Color3(192 / 255, 74 / 255, 188 / 255);
+                sphere.material = new BABYLON.StandardMaterial("sphereMaterial", scene);
+                sphere.material.diffuseColor = new BABYLON.Color3(255 / 255, 219 / 255, 181 / 255);
+                cylinder.material = new BABYLON.StandardMaterial("cylinderMaterial", scene);
+                cylinder.material.diffuseColor = new BABYLON.Color3(224 / 255, 164 / 255, 88 / 255);
+                torus.material = new BABYLON.StandardMaterial("torusMaterial", scene);
+                torus.material.diffuseColor = new BABYLON.Color3(65 / 255, 157 / 255, 120 / 255);
+                cone.material = new BABYLON.StandardMaterial("coneMaterial", scene);
+                cone.material.diffuseColor = new BABYLON.Color3(45 / 255, 48 / 255, 71 / 255);
+
+
+
+                // Position shapes
+                box.position.x = -2;
+                sphere.position.x = -1;
+                cylinder.position.x = 0;
+                torus.position.x = 1;
+                cone.position.x = 2;
+
+                // Create rotation animation
+                var rotateAnimation = new BABYLON.Animation("rotation", "rotation.y", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+                var keys = [];
+                keys.push({ frame: 0, value: 0 });
+                keys.push({ frame: 100, value: Math.PI * 2 });
+                rotateAnimation.setKeys(keys);
+                scene.beginDirectAnimation(box, [rotateAnimation], 0, 100, true);
+                scene.beginDirectAnimation(sphere, [rotateAnimation], 0, 100, true);
+                scene.beginDirectAnimation(cylinder, [rotateAnimation], 0, 100, true);
+                scene.beginDirectAnimation(torus, [rotateAnimation], 0, 100, true);
+                scene.beginDirectAnimation(cone, [rotateAnimation], 0, 100, true);
+
+                return scene;
+            };
+
+            var createScene2 = function() {
+                var scene = new BABYLON.Scene(engine2);
+                var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), scene);
+                camera.attachControl(canvas2, true);
+
+                var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+                // Load 3D model
+                BABYLON.SceneLoader.ImportMesh("", "models/", "dog.obj", scene, function(meshes) {
+                    // Position the model
+                    meshes[0].position = BABYLON.Vector3.Zero();
+                });
+
+                return scene;
+            };
+
+            var scene1 = createScene1();
+            var scene2 = createScene2();
+
+            engine1.runRenderLoop(function() {
+                scene1.render();
+            });
+
+            engine2.runRenderLoop(function() {
+                scene2.render();
+            });
+
+            window.addEventListener("resize", function() {
+                engine1.resize();
+                engine2.resize();
+            });
+
+            // Switch between pages
+            function switchToPage(page) {
+                if (page === "page1") {
+                    page1.style.display = "block";
+                    page2.style.display = "none";
+                } else if (page === "page2") {
+                    page1.style.display = "none";
+                    page2.style.display = "block";
+                }
+            }
+        };
+    </script>
+</body>
+</html>
