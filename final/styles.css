@@ -1,0 +1,11 @@
+canvas {
+    border: 3px solid white;
+    display: block;
+    margin: 0 auto;
+}
+body {
+    font-family: cubano;
+    background-color: #FF7FB7;
+    text-align: center;
+    color: white;
+}
